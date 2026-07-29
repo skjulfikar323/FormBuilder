@@ -1,0 +1,54 @@
+# .NET build output
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / VS
+.idea/
+.vs/
+
+# VS Code — ignore everything EXCEPT the shared debug/tasks configs
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Logs
+logs/
+*.log
+
+# Frontend (also has its own .gitignore inside FormBuilder.UI/)
+FormBuilder.UI/node_modules/
+FormBuilder.UI/dist/
+FormBuilder.UI/.env
+FormBuilder.UI/.env.local
+
+# Backups + local-only folders (never commit)
+BackUp-UI-Project-Only/
+*/backup/
+*.bak
+
+# Secrets — never commit
+appsettings.Production.json
+appsettings.Local.json
+secrets.json
+*.pfx
+*.key
+*.pem
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Design source
+design/*.svg.tmp
+
+# Node_modules anywhere just in case
+**/node_modules/
+
+# Documentation build outputs (large — regenerate as needed)
+docs/output/

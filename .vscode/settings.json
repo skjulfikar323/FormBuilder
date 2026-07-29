@@ -1,0 +1,22 @@
+{
+  "dotnet.defaultSolution": "FormBuilder.sln",
+  "editor.formatOnSave": false,
+  "files.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/node_modules": false
+  },
+  "search.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/*.log": true,
+    "**/logs": true
+  },
+  "csharp.suppressDotnetInstallWarning": true,
+  "csharp.inlayHints.enableInlayHintsForParameters": true,
+  "csharp.semanticHighlighting.enabled": true,
+  "omnisharp.enableRoslynAnalyzers": true,
+  "typescript.tsdk": "FormBuilder.UI/node_modules/typescript/lib"
+}

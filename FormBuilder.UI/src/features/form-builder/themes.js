@@ -1,0 +1,62 @@
+export const THEMES = {
+  light: {
+    id: 'light',
+    label: 'Light',
+    background: '#FFFFFF',
+    text: '#171923',
+    botBubbleBg: '#F7F8FF',
+    botBubbleText: '#171923',
+    userBubbleBg: '#FF8B1A',
+    userBubbleText: '#FFFFFF',
+    accent: '#FF8B1A',
+    avatarBg: '#0042DA',
+    avatarText: '#FFFFFF',
+    inputBar: '#F97316',
+    buttonBar: '#1A5FFF',
+    sendButton: '#1A5FFF',
+    inputBg: '#F7F8FF',
+    inputText: '#171923',
+  },
+  dark: {
+    id: 'dark',
+    label: 'Dark',
+    background: '#171923',
+    text: '#EEEEEE',
+    botBubbleBg: '#252528',
+    botBubbleText: '#FFFFFF',
+    userBubbleBg: '#FF8B1A',
+    userBubbleText: '#FFFFFF',
+    accent: '#FF8B1A',
+    avatarBg: '#1A5FFF',
+    avatarText: '#FFFFFF',
+    inputBar: '#F97316',
+    buttonBar: '#1A5FFF',
+    sendButton: '#1A5FFF',
+    inputBg: '#252528',
+    inputText: '#FFFFFF',
+  },
+  'tail-blue': {
+    id: 'tail-blue',
+    label: 'Tail Blue',
+    background: '#508C9B',
+    text: '#EEEEEE',
+    botBubbleBg: '#134B70',
+    botBubbleText: '#EEEEEE',
+    userBubbleBg: '#FF8B1A',
+    userBubbleText: '#FFFFFF',
+    accent: '#FF8B1A',
+    avatarBg: '#0042DA',
+    avatarText: '#FFFFFF',
+    inputBar: '#EEEEEE',
+    buttonBar: '#134B70',
+    sendButton: '#134B70',
+    inputBg: '#134B70',
+    inputText: '#FFFFFF',
+  },
+}
+
+export const THEME_LIST = Object.values(THEMES)
+
+export function getTheme(id) {
+  return THEMES[id] || THEMES.light
+}

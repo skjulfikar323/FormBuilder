@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="FormBuilder.API/FormBuilder.API.csproj" />
+  <Project Path="FormBuilder.Core/FormBuilder.Core.csproj" />
+  <Project Path="FormBuilder.Data/FormBuilder.Data.csproj" />
+  <Project Path="FormBuilder.Message/FormBuilder.Message.csproj" />
+  <Project Path="FormBuilder.Service/FormBuilder.Service.csproj" />
+  <Project Path="FormBuilder.UnitTests/FormBuilder.UnitTests.csproj" />
+  <Project Path="FormBuilder.Utilities/FormBuilder.Utilities.csproj" />
+</Solution>

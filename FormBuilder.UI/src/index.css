@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --primary: 243 75% 59%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 243 75% 59%;
+
+    --radius: 0.625rem;
+
+    /* Global app theme tokens (used across all pages) */
+    --app-bg: #121212;
+    --app-surface: #1A1A1D;
+    --app-surface-2: #252528;
+    --app-surface-3: #1E1E22;
+    --app-text: #FFFFFF;
+    --app-text-muted: rgba(255, 255, 255, 0.7);
+    --app-text-dim: rgba(255, 255, 255, 0.5);
+    --app-border: rgba(255, 255, 255, 0.1);
+    --app-border-strong: rgba(255, 255, 255, 0.2);
+    --app-accent: #1A5FFF;
+  }
+
+  html[data-theme='dark'] {
+    --app-bg: #121212;
+    --app-surface: #1A1A1D;
+    --app-surface-2: #252528;
+    --app-surface-3: #1E1E22;
+    --app-text: #FFFFFF;
+    --app-text-muted: rgba(255, 255, 255, 0.7);
+    --app-text-dim: rgba(255, 255, 255, 0.5);
+    --app-border: rgba(255, 255, 255, 0.1);
+    --app-border-strong: rgba(255, 255, 255, 0.2);
+    --app-accent: #1A5FFF;
+  }
+
+  html[data-theme='light'] {
+    --app-bg: #F7F8FF;
+    --app-surface: #FFFFFF;
+    --app-surface-2: #EEEEEE;
+    --app-surface-3: #F1F2F7;
+    --app-text: #171923;
+    --app-text-muted: rgba(23, 25, 35, 0.75);
+    --app-text-dim: rgba(23, 25, 35, 0.5);
+    --app-border: rgba(23, 25, 35, 0.1);
+    --app-border-strong: rgba(23, 25, 35, 0.2);
+    --app-accent: #1A5FFF;
+  }
+
+  html[data-theme='tail-blue'] {
+    --app-bg: #508C9B;
+    --app-surface: #134B70;
+    --app-surface-2: #0F3D5C;
+    --app-surface-3: #1B5A82;
+    --app-text: #EEEEEE;
+    --app-text-muted: rgba(238, 238, 238, 0.8);
+    --app-text-dim: rgba(238, 238, 238, 0.55);
+    --app-border: rgba(238, 238, 238, 0.15);
+    --app-border-strong: rgba(238, 238, 238, 0.3);
+    --app-accent: #0042DA;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 5.5%;
+    --card-foreground: 0 0% 98%;
+
+    --primary: 243 75% 65%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 243 75% 65%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    background-color: var(--app-bg);
+    color: var(--app-text);
+    @apply font-sans antialiased;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+}
+
+@layer utilities {
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .app-bg {
+    background-color: var(--app-bg);
+  }
+  .app-surface {
+    background-color: var(--app-surface);
+  }
+  .app-surface-2 {
+    background-color: var(--app-surface-2);
+  }
+  .app-surface-3 {
+    background-color: var(--app-surface-3);
+  }
+  .app-text {
+    color: var(--app-text);
+  }
+  .app-text-muted {
+    color: var(--app-text-muted);
+  }
+  .app-text-dim {
+    color: var(--app-text-dim);
+  }
+  .app-border {
+    border-color: var(--app-border);
+  }
+  .app-border-strong {
+    border-color: var(--app-border-strong);
+  }
+}

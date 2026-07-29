@@ -1,0 +1,150 @@
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Link } from 'react-router-dom'
+import { registerSchema } from '../schemas/authSchemas.js'
+import { useRegister } from '../hooks/useAuth.js'
+import { PasswordInput } from './PasswordInput.jsx'
+
+const baseInput =
+  'w-full h-11 rounded-xl bg-transparent border border-white/50 px-4 text-sm text-white placeholder:text-[#636364] outline-none transition focus:border-white/80 focus:ring-2 focus:ring-white/10 shadow-[0_4px_10px_rgba(0,0,0,0.25)]'
+
+const errorInput =
+  'border-[#FF2727]/60 focus:border-[#FF2727] focus:ring-[#FF2727]/10 shadow-[0_4px_10px_rgba(233,68,75,0.25)]'
+
+export function RegisterForm() {
+  const { mutate: submit, isPending } = useRegister()
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(registerSchema),
+    defaultValues: {
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
+  })
+
+  const onSubmit = (values) => {
+    const { confirmPassword, ...payload } = values
+    submit(payload)
+  }
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+      <div className="space-y-2">
+        <label htmlFor="username" className="block text-sm font-semibold text-white">
+          Username
+        </label>
+        <input
+          id="username"
+          type="text"
+          placeholder="Enter a username"
+          autoComplete="username"
+          aria-invalid={!!errors.username}
+          className={`${baseInput} ${errors.username ? errorInput : ''}`}
+          {...register('username')}
+        />
+        {errors.username && (
+          <p className="text-xs text-red-400">{errors.username.message}</p>
+        )}
+      </div>
+
+      <div className="space-y-2">
+        <label htmlFor="email" className="block text-sm font-semibold text-white">
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          placeholder="Enter your email"
+          autoComplete="email"
+          aria-invalid={!!errors.email}
+          className={`${baseInput} ${errors.email ? errorInput : ''}`}
+          {...register('email')}
+        />
+        {errors.email && (
+          <p className="text-xs text-red-400">{errors.email.message}</p>
+        )}
+      </div>
+
+      <div className="space-y-2">
+        <label htmlFor="password" className="block text-sm font-semibold text-white">
+          Password
+        </label>
+        <PasswordInput
+          id="password"
+          placeholder="**********"
+          autoComplete="new-password"
+          aria-invalid={!!errors.password}
+          className={baseInput}
+          errorClassName={errorInput}
+          hasError={!!errors.password}
+          {...register('password')}
+        />
+        {errors.password && (
+          <p className="text-xs text-red-400">{errors.password.message}</p>
+        )}
+      </div>
+
+      <div className="space-y-2">
+        <label
+          htmlFor="confirmPassword"
+          className={`block text-sm font-semibold ${
+            errors.confirmPassword ? 'text-[#FF4141]' : 'text-white'
+          }`}
+        >
+          Confirm Password
+        </label>
+        <PasswordInput
+          id="confirmPassword"
+          placeholder="**********"
+          autoComplete="new-password"
+          aria-invalid={!!errors.confirmPassword}
+          className={baseInput}
+          errorClassName={errorInput}
+          hasError={!!errors.confirmPassword}
+          {...register('confirmPassword')}
+        />
+        {errors.confirmPassword && (
+          <p className="text-xs font-medium text-[#FF4141]">
+            {errors.confirmPassword.message}
+          </p>
+        )}
+      </div>
+
+      <button
+        type="submit"
+        disabled={isPending}
+        className="mt-6 flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#1A5FFF] text-sm font-semibold text-white shadow-[0_4px_10px_rgba(26,95,255,0.35)] transition hover:bg-[#1653DD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1A5FFF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#121212] disabled:cursor-not-allowed disabled:opacity-70"
+      >
+        {isPending && (
+          <svg
+            className="h-4 w-4 animate-spin"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" className="opacity-25" />
+            <path
+              fill="currentColor"
+              className="opacity-75"
+              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+            />
+          </svg>
+        )}
+        {isPending ? 'Signing up...' : 'Sign Up'}
+      </button>
+
+      <p className="text-center text-sm text-white">
+        Already have an account ?{' '}
+        <Link to="/login" className="font-medium text-[#1A5FFF] hover:underline">
+          Login
+        </Link>
+      </p>
+    </form>
+  )
+}

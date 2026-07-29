@@ -1,0 +1,66 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Backend: Debug FormBuilder.API",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-api",
+      "program": "${workspaceFolder}/FormBuilder.API/bin/Debug/net9.0/FormBuilder.API.dll",
+      "cwd": "${workspaceFolder}/FormBuilder.API",
+      "args": [],
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+        "uriFormat": "%s/swagger"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5000"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      },
+      "console": "integratedTerminal",
+      "logging": {
+        "moduleLoad": false
+      }
+    },
+    {
+      "name": "Backend: Attach to running FormBuilder.API",
+      "type": "coreclr",
+      "request": "attach",
+      "processName": "FormBuilder.API"
+    },
+    {
+      "name": "Frontend: Chrome against http://localhost:5180",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5180",
+      "webRoot": "${workspaceFolder}/FormBuilder.UI",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${workspaceFolder}/FormBuilder.UI/src/*"
+      }
+    },
+    {
+      "name": "Frontend: Edge against http://localhost:5180",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:5180",
+      "webRoot": "${workspaceFolder}/FormBuilder.UI",
+      "sourceMaps": true
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full stack: Backend + Chrome",
+      "configurations": [
+        "Backend: Debug FormBuilder.API",
+        "Frontend: Chrome against http://localhost:5180"
+      ],
+      "stopAll": true
+    }
+  ]
+}
